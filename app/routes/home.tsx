@@ -16,7 +16,7 @@ export default function Home() {
     <Navbar />
     <section className="main-section">
     <div className="page-heading">
-      <h1>Track Your Applecation & Resume Ratings</h1>
+      <h1>your dream job</h1>
       <h2>Review your submissions and check AI-powered feedback.</h2>
       </div>
     </section>
