@@ -8,7 +8,7 @@ export const meta = () => ([
     {name: 'description ', content:'Log into your account '},
 ])
 
-const Auth = () => {
+const auth = () => {
     const { isLoading, auth } = usePuterStore(); 
     const location = useLocation();
     const next = location.search.split('next=')[1];
@@ -52,4 +52,4 @@ const Auth = () => {
     )
 }
 
-export default Auth
+export default auth
