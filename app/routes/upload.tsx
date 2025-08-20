@@ -1,4 +1,5 @@
 import {useState, type FormEvent} from 'react'
+import FileUploader from '~/components/FileUploader';
 import Navbar from '~/components/Navbar'
 
 function upload() {
@@ -37,6 +38,15 @@ function upload() {
                                 <label htmlFor='jop-description'>Jop Description</label>
                                 <textarea rows={5} name='jop-description' placeholder='Jop Description' id='jop-description'></textarea>
                             </div>
+                            <div className='form-div'>
+                                <label htmlFor='uploader'>Upload Resume</label>
+                                    <FileUploader />           
+                            </div>
+                            <button className='primary-button' type='submit'>
+                                Analyze Resume 
+                            </button>
+
+
                         </form>
                     )}
               </div>
