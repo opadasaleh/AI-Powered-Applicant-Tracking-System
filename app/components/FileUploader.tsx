@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 import {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 
-const FileUploader = () => {
+
+interface FileUploaderProps {
+  onFileSelect?: (file: File | null) => void;
+}
+const FileUploader = ({ onFileSelect }:  FileUploaderProps ) => {
   const [file,setFile] = useState();
-  const onDrop = useCallback(acceptedFiles => {
+  const onDrop = useCallback( (acceptedFiles: File[]) => {
     // Do something with the files
+    const file = acceptedFiles[0] || null;
   }, [])
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
