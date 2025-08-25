@@ -1,3 +1,4 @@
+import { on } from 'node:events';
 import React, { useState } from 'react'
 import {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
@@ -7,13 +8,25 @@ import {useDropzone} from 'react-dropzone'
 interface FileUploaderProps {
   onFileSelect?: (file: File | null) => void;
 }
-const FileUploader = ({ onFileSelect }:  FileUploaderProps ) => {
-  const [file,setFile] = useState();
+const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
+  
+  // const [file, setFile] = useState();
+  
   const onDrop = useCallback( (acceptedFiles: File[]) => {
     // Do something with the files
     const file = acceptedFiles[0] || null;
-  }, [])
-    const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+    onFileSelect?.(file);
+  }, [onFileSelect])
+  const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({
+    onDrop,
+    multiple: false,
+    accept: { 'application/pdf': ['.pdf'] },
+    maxSize: 20 * 1024 * 1024,
+    
+  })
+ 
+  const file = acceptedFiles[0] || null;
+
 
   return (
     <div className='w-full gradient-border'>

@@ -5,7 +5,7 @@ import Navbar from '~/components/Navbar'
 function upload() {
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('');    
-    const [file, setFile] = useState();
+    const [file, setFile] = useState<File | null>(null);
 
     const handleFileSelect = (file: File | null) => {
         setFile(file)
